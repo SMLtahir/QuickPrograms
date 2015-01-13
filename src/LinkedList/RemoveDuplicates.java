@@ -1,8 +1,8 @@
-package LinkedList;
+package linkedList;
 
 public class RemoveDuplicates {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ArrayIndexOutOfBoundsException{
 
 		int[] valueArray = {1,1,2,2,3};
 		ListNode head = LinkListUtils.initializeLinkList(valueArray);
@@ -12,7 +12,6 @@ public class RemoveDuplicates {
 		//Only distinct elements are selected
 		ListNode changedHead = deleteDuplicates2(head);
 		LinkListUtils.display(changedHead);
-
 	}
 
 	/**

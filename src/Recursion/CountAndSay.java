@@ -1,4 +1,4 @@
-package Recursion;
+package recursion;
 
 /**
  * LeetCode question- CountAndSay

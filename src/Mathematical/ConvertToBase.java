@@ -1,4 +1,4 @@
-package Mathematical;
+package mathematical;
 
 /**
  * Converts to any base depending on inputs

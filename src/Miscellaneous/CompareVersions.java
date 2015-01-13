@@ -1,4 +1,4 @@
-package Miscellaneous;
+package miscellaneous;
 
 public class CompareVersions {
 

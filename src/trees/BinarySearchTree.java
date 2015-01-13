@@ -1,12 +1,12 @@
-package Trees;
+package trees;
 
-public class BinaryTree {
+public class BinarySearchTree {
 
 	Node root;
 	
 	public static void main(String[] args)	{
 		
-		BinaryTree theTree = new BinaryTree();
+		BinarySearchTree theTree = new BinarySearchTree();
 		
 		theTree.addNode(50, "50");
 		theTree.addNode(40, "40");
