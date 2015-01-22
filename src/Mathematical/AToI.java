@@ -9,10 +9,7 @@ LeetCode Question: https://oj.leetcode.com/problems/string-to-integer-atoi/
  */
 public class AToI {
 	
-	private static final int INT_MAX = 2147483647;
-    private static final int INT_MIN = -2147483648;
-    
-    private static final String INPUT = "9223372036854775809";
+	private static final String INPUT = "9223372036854775809";
     
 	public static void main(String[] args) {
 
@@ -43,7 +40,7 @@ public static int atoi(String str) {
         }
         
         /*This is to stop checking after the INT overflow limits are reached. If this is not done, then long limits will also have to   checked, etc. which becomes very complicated.*/
-        for(int i=1; i< chArr.length && -longNr > INT_MIN; i++)  {
+        for(int i=1; i< chArr.length && -longNr > Integer.MIN_VALUE; i++)  {
             ch = chArr[i];
             if((ch < '0') || (ch > '9'))   break;   //Break and return whatever is stored
             else    {
@@ -53,8 +50,8 @@ public static int atoi(String str) {
         if(negFlag)	longNr = -longNr;
         
         //Check for int overflows - Return INT_MIN/MAX in case of overflows
-        if(longNr < INT_MIN)    return INT_MIN;
-        else if(longNr > INT_MAX)    return INT_MAX;
+        if(longNr < Integer.MIN_VALUE)    return Integer.MIN_VALUE;
+        else if(longNr > Integer.MAX_VALUE)    return Integer.MAX_VALUE;
         else    { 
             return((int)longNr);
         }
