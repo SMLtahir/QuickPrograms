@@ -1,8 +1,13 @@
 package bitManipulation;
 
+/**
+ * Represent a given decimal number in its binary form
+ * @author Tahir
+ *
+ */
 public class BinaryRepresentation {
 
-	private static String INPUT = "2345.625";
+	private static String INPUT = "245.625";
 	public static void main(String[] args) {
 
 
@@ -15,11 +20,11 @@ public class BinaryRepresentation {
 		int intPart = Integer.parseInt(n.substring(0,n.indexOf(".")));
 		double decPart = Double.parseDouble(n.substring(n.indexOf("."), n.length()));
 		
-		StringBuilder intSb = new StringBuilder();
+		String intString = "";
 		while(intPart != 0)	{
 			int r = intPart%2;
 			intPart = intPart>>1;
-			intSb.append(String.valueOf(r));
+			intString = r + intString;
 		}
 		
 		StringBuilder decSb = new StringBuilder();
@@ -41,7 +46,7 @@ public class BinaryRepresentation {
 			}
 		}
 		
-		return intSb.toString() + "." + decSb.toString();
+		return intString + "." + decSb.toString();
 	}
 
 }

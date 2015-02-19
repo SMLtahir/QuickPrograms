@@ -4,14 +4,61 @@ public class ReverseList {
 
 	public static void main(String[] args) {
 
-		int size = 5;
+		int size = 10;
 		ListNode head = LinkListUtils.initializeLinkList(size);
 		LinkListUtils.display(head);
+		ListNode reversedHead = reverseRecursively(head);
+		LinkListUtils.display(reversedHead);
 //		ListNode reversedHead = reverseBetween(head,1,5);
 //		LinkListUtils.display(reversedHead);
-		ListNode reversedKHead = reverseKGroup(head,3);
-		LinkListUtils.display(reversedKHead);
+//		ListNode reversedKHead = reverseKGroup(head,3);
+//		LinkListUtils.display(reversedKHead);
 
+	}
+	
+	/**
+	 * Reverse a linked list recursively
+	 * @param head
+	 * @return
+	 */
+	public static ListNode reverseRecursively(ListNode head)
+	{
+	    //Trivial/ base cases
+		if (head == null) return null;
+	    if (head.next == null) return head;
+
+	    ListNode nextElem = head.next;
+
+	    head.next = null;
+
+	    // Reverse everything from the second element on
+	    ListNode reverseRest = reverseRecursively(nextElem);
+	    nextElem.next = head;
+
+	    return reverseRest;
+	}
+	
+	/**
+	 * Reverse whole linked list
+	 * @param head
+	 * @return
+	 */
+	public static ListNode reverseList(ListNode head)	{
+		//Trivial Cases
+		if(head == null || head.next == null)	return head;
+		
+		//General case
+		ListNode start = new ListNode(0);
+		start.next = head;
+		ListNode focus = head;
+			
+		while(focus.next != null)	{
+			ListNode temp = focus.next;
+			focus.next = focus.next.next;
+			temp.next = start.next;
+			start.next = temp;
+		}
+		return start.next;
 	}
 	
 	/**

@@ -2,6 +2,12 @@ package arrays;
 
 import java.util.Random;
 
+/**
+Find min element in a sorted rotated array
+A sorted array has been rotated so that the elements might appear in the order 3 4 5 6 7 1 2  How would you find the minimum element?
+ * @author Tahir
+ *
+ */
 public class FindElement {
 
 	private static int TIME_COMP_CONSTANT = 0;
@@ -9,8 +15,6 @@ public class FindElement {
 	public static void main(String[] args) {
 
 		/////
-		//Find min element in a sorted rotated array
-		//A sorted array has been rotated so that the elements might appear in the order 3 4 5 6 7 1 2  How would you find the minimum element?
 		/*int[] sortedRotatedArray = {4,5,6,7,8,9,10,11,12,13,14,15,1,2,3};
 		int minElement = sortedRotatedArray[getMinElement(sortedRotatedArray)];
 		System.out.println("\nMin Element: "+ minElement);
@@ -31,13 +35,6 @@ public class FindElement {
 		image[2][2] = 32;
 		
 		rotateImage(image);
-		/////
-		
-		
-		String str = "abc";
-		
-		Character ch = str.charAt(0);
-		System.out.println("Test complete");
 
 	}
 

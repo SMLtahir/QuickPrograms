@@ -3,6 +3,11 @@ package arrays;
 import java.util.HashMap;
 import java.util.Set;
 
+/**
+ * All numbers in the list have duplicates, except for one. Find that one. 
+ * @author Tahir
+ *
+ */
 public class FindUniqueAmongstDuplicates {
 
 	private static final int[] input = {1,2,3,4,5,4,3,2,1};
