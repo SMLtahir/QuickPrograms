@@ -13,6 +13,7 @@ public class Multiplication {
 	public static void main(String[] args) {
 
 		System.out.println(X+ " x "+ Y+ " = "+ bitMultiply(X,Y)+ " = "+ X*Y+ "?");
+		
 	}
 	
 	public static int bitMultiply(int x, int y) {

@@ -24,8 +24,7 @@ public class ReverseList {
 	public static ListNode reverseRecursively(ListNode head)
 	{
 	    //Trivial/ base cases
-		if (head == null) return null;
-	    if (head.next == null) return head;
+	    if (head == null || head.next == null) return head;
 
 	    ListNode nextElem = head.next;
 
