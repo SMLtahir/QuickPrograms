@@ -77,9 +77,9 @@ public class BinarySearchTree {
 	public void postorderTraverseTree(Node focusNode)	{
 		
 		if(focusNode != null)	{
-			System.out.println(focusNode);
 			postorderTraverseTree(focusNode.leftChild);
 			postorderTraverseTree(focusNode.rightChild);
+			System.out.println(focusNode);
 		}
 		
 	}

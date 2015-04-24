@@ -1,5 +1,12 @@
 package linkedList;
 
+/**
+ * Reorder list like example below,
+ * 1-2-3-4-5-6-7-8 should output
+ * 1-8-2-7-3-6-4-5
+ * @author Tahir
+ *
+ */
 public class ReorderList {
 
 	public static void main(String[] args) {

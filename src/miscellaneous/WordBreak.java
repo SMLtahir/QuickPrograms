@@ -11,6 +11,7 @@ public class WordBreak {
 	public static void main(String[] args) {
 		
 		int ch = 'a';
+		
 		int CH = 'A';
 		System.out.println(ch+ ", "+ CH);
 		Set<String> dict = new TreeSet<String>();

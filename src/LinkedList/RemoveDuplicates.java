@@ -24,8 +24,7 @@ Given 1->1->2->3->3, return 1->2->3.
 	 */
 	public static ListNode deleteDuplicates1(ListNode head) {
         //Handle trivial cases
-        if(head == null)   return head;
-        if(head.next == null)   return head;
+        if(head == null || head.next == null)   return head;
         
         ListNode start = head, focus = head;
         while(focus != null) {
