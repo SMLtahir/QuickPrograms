@@ -28,6 +28,19 @@ public class SampleUsage {
 		
 		//Testing...		
 		System.out.println("Test: "+ Integer.toBinaryString(1));
+		
+		//Get Hamming weight
+		int h = 2147483647;
+		System.out.println("Hamming weight for "+ h+ " is: "+ hammingWeight(h));
+		
+		//Get reverse bit number
+		x = 1;
+		System.out.println("Reverse bit number for "+ Integer.toBinaryString(x) + " is: "+ reverseBits(x) );
+		
+		//Add Two binary strings
+		String a = "10100000100100110110010000010101111011011001101110111111111101000000101111001110001111100001101";
+		String b = "110101001011101110001111100110001010100001101011101010000011011011001011101111001100000011011110011";
+		System.out.println("Addition of "+ a + " and "+ b + " is: "+  addBinary(a, b));
 	}
 	
 	/**
@@ -63,5 +76,64 @@ public class SampleUsage {
 		}
 		return negFlag? (32-result): result;
 	}
+	
+	/**
+	 * Returns the number of bits in an unsigned integer represented in binary form
+	 */
+	public static int hammingWeight(int n) {
+		// Treat n as an unsigned value
+		int ones = 0;
+        while(n != 0) {
+            if((n & 1) == 1) { ones++;}
+            n = n>>>1;
+        }
+        return ones;
+    }
+	
+	/**
+	 * Returns a 32-bit integer with bits reverse to the unsigned integer input
+	 */
+	public static int reverseBits(int n) {
+        
+        int bits = 32;
+        int m = 0;
+        while(bits != 0 && n != 0) {
+            if((n & 1) == 1) {
+                m = m | 1;
+            }
+            if(bits >= 1) {
+            	n = n>>>1;
+                m = m<<1;	
+            }
+            bits--;
+        }
+        return (m << (bits-1));
+    }
+	
+	/**
+	 * Add 2 binary strings and outputs result in string form too
+	 */
+	public static String addBinary(String a, String b) {
+        
+        //Trivial cases
+        if(a == null || a.isEmpty()) 
+            return b;
+        if(b == null || b.isEmpty()) 
+            return a;
+        
+        int indA = a.length() - 1;
+        int indB = b.length() - 1;
+        int carry = 0;
+        StringBuilder sb = new StringBuilder();
+        
+        while(indA >= 0 || indB >= 0 || carry == 1) {
+            int resA = (indA >= 0) ? Character.getNumericValue(a.charAt(indA--)) : 0;
+            int resB = (indB >= 0) ? Character.getNumericValue(b.charAt(indB--)) : 0;
+            int digit = resA ^ resB ^ carry;
+            carry = ((resA + resB + carry) >= 2) ? 1 : 0;
+            sb.append(digit);
+        }
+        return sb.reverse().toString();
+    }
 
 }

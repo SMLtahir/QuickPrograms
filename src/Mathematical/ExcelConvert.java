@@ -18,10 +18,12 @@ public class ExcelConvert {
 	public static void main(String[] args) {
 
 		int input = 1000000;
+		String revInput = "BA";
 		
-		System.out.println("By method 1: "+ convertToTitle1(input));
-		System.out.println("By method 2: "+ convertToTitle2(input));
-		System.out.println("By method 3: "+ convertToTitle3(input));
+		System.out.println("TitleToNumber: "+ titleToNumber(revInput));
+//		System.out.println("By method 1: "+ convertToTitle1(input));
+//		System.out.println("By method 2: "+ convertToTitle2(input));
+//		System.out.println("By method 3: "+ convertToTitle3(input));
 	}
 	
 	public static String convertToTitle3(int n) {
@@ -86,6 +88,53 @@ public class ExcelConvert {
             }
         }
         return chars;
+    }
+    
+    /**
+Given a column title as appear in an Excel sheet, return its corresponding column number.
+For example:
+
+    A -> 1
+    B -> 2
+    C -> 3
+    ...
+    Z -> 26
+    AA -> 27
+    AB -> 28 
+     * @param s
+     * @return
+     */
+    public static int titleToNumber(String s) {
+        char[] ch = s.toCharArray();
+        int len = ch.length;
+        int result = 0;
+        // val(ch[i]) = 1+ int(ch[0]) - int('a')
+        // len = 1
+        // val(ch[0])*26^0
+        
+        // len = 2
+        // 26^1 + ( val(ch[1]) - 1 )*26^1 + val(ch[0])*26^0
+        
+        // len = 3
+        // 26^2 + 26^1 + (val(ch[2]) - 1)*26^2 + ( val(ch[1]) - 1 )*26^1 + val(ch[0])*26^0
+        int i = len;
+        while(i > 1) {
+            result += Math.pow(26, i-1);
+            if((int) ch[len- i] != 'a' && (int) ch[len- i] != 'A')
+                result += (value(ch[len- i])-1)*Math.pow(26, i-1);
+            i--;
+        }
+        result += value(ch[len- i]);
+        return result;
+    }
+    
+    public static int value(char n) {
+        int val = 0;
+        if((int) n <= 90)
+            val = 1+ (int) n - 'A';
+        else
+            val = 1+ (int) n - 'a';
+        return val;
     }
 
 }

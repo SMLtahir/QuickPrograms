@@ -8,20 +8,53 @@ number of 1 bits in their binary representation
  */
 public class SameBitNumbers {
 
-	private static int INPUT = 1234;
+	private static int INPUT = 156;
 	
 	public static void main(String[] args) {
 
-		int[] neighbours = getNeighbouringSameBitNumbers(INPUT);
-		System.out.println("Higher: "+ neighbours[0]+ " Lower: "+ neighbours[1]);
+//		int[] neighbours = getNeighbouringSameBitNumbers(INPUT);
+//		System.out.println("Higher: "+ neighbours[0]+ " Lower: "+ neighbours[1]);
+		System.out.println("Higher: "+ getNextHigherNumber(INPUT)+ " Lower: "+ getNextLowerNumber(INPUT));
 
 	}
 	
 	/**
+	 * Efficient Method to return the next higher number with same bits
+	 */
+	private static int getNextHigherNumber(int x) {
+
+		// -x has all bits different from x except the rightmost set bit
+		// This gives the right most set bit 
+	    int rightOne = x & -x;
+	 
+	    // reset the pattern and set next higher bit
+	    // left part of x will be here
+	    int nextHigherOneBit = x + rightOne;
+	 
+	    // isolate the pattern
+	    int rightOnesPattern = x ^ nextHigherOneBit;
+	 
+	    // right adjust pattern
+	    rightOnesPattern = rightOnesPattern/rightOne;
+	 
+	    // correction factor
+	    rightOnesPattern >>= 2;
+	 
+	    // integrate new pattern
+	    return nextHigherOneBit | rightOnesPattern;
+	}
+	
+	/**
+	 * Efficient Method to return the previous lower number with same bits
+	 */
+	private static int getNextLowerNumber(int n) {
+		return ~getNextHigherNumber(~n);
+	}
+
+	/**
+	 * Inefficient Method!! Don't use!
 	 * Returns the next smallest and next highest numbers having the same number
 	 * of bits as the original input number. This does not handle negative numbers.
-	 * @param n
-	 * @return
 	 */
 	private static int[] getNeighbouringSameBitNumbers(int n)	{
 		int[] neighbours = new int[2];
