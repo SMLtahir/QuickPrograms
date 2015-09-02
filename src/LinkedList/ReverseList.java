@@ -7,12 +7,12 @@ public class ReverseList {
 		int size = 10;
 		ListNode head = LinkListUtils.initializeLinkList(size);
 		LinkListUtils.display(head);
-		ListNode reversedHead = reverseRecursively(head);
-		LinkListUtils.display(reversedHead);
+//		ListNode reversedHead = reverseRecursively(head);
+//		LinkListUtils.display(reversedHead);
 //		ListNode reversedHead = reverseBetween(head,1,5);
 //		LinkListUtils.display(reversedHead);
-//		ListNode reversedKHead = reverseKGroup(head,3);
-//		LinkListUtils.display(reversedKHead);
+		ListNode reversedKHead = reverseKGroup(head,3);
+		LinkListUtils.display(reversedKHead);
 
 	}
 	
@@ -109,40 +109,29 @@ For k = 3, you should return: 3->2->1->4->5
 	 * @return
 	 */
 	public static ListNode reverseKGroup(ListNode head, int k) {
-        int i = 1;
-        int size = getSize(head);
-        ListNode beforeHead = new ListNode(0);
-        ListNode start = new ListNode(0);
-        start.next = head;
-        beforeHead.next = head;
-        ListNode tail = head;
-        boolean isStartSet = false;
-        while(i+k-1 <= size)   {
-            for(int j=i; j< i+k-1; j++) {
-                beforeHead.next = tail.next;
-                tail.next = tail.next.next;
-                beforeHead.next.next = head;
-                head = beforeHead.next;
-            }
-            i+= k;
-            
-            if(!isStartSet) { 
-            	start.next = beforeHead.next;
-            	isStartSet = true;
-            }
-            beforeHead = tail;
-            head = tail.next;
-            tail = head;
-        }
-        return start.next;
-    }
-
-	public static int getSize(ListNode head) {
-        int count = 0;
-        while(head != null) {
-            count++;
-            head = head.next;
-        }
-        return count;
-    }
+		int count = 0;
+		ListNode start = new ListNode(0);
+		ListNode prefocus = start, focus = head, end = head;
+		start.next = head;
+		
+		while(focus != null) {
+			while(end != null && count < k-1) {
+				end = end.next;
+				count++;
+			}
+			if(end == null) { break;}
+			
+			while(count != 0) {
+				count--;
+				ListNode temp = prefocus.next; 
+				prefocus.next = focus.next;
+				focus.next = focus.next.next;
+				prefocus.next.next = temp;
+			}
+			prefocus = focus;
+			focus = focus.next;
+			end = focus;
+		}
+		return start.next;
+	}
 }

@@ -2,7 +2,7 @@ package linkedList;
 
 public class SortList {
 
-	private static final int[] INPUT = {3,2,1};
+	private static final int[] INPUT = {3,2,5,4,3,1};
 	
 	public static void main(String[] args) {
 

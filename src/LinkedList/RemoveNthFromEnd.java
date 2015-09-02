@@ -13,6 +13,7 @@ public class RemoveNthFromEnd {
 
 	}
 	
+	// Better method
 	public static ListNode removeNthFromEnd2(ListNode head, int n) {
         
         ListNode start = new ListNode(0);

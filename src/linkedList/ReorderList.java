@@ -32,6 +32,8 @@ public class ReorderList {
             fast = fast.next.next;
         }
         ListNode mid = slow, cur = slow.next;
+        // The element immediately after mid should point to null so that
+        // after reversal in next step, it can be the last element
         if(cur!=null){
             ListNode tmp = cur.next;
             cur.next = null;

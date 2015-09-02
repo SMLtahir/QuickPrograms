@@ -1,5 +1,8 @@
 package trees;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
 Given a binary tree, determine if it is height-balanced.
 For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.
@@ -33,6 +36,36 @@ public class BalancedBinaryTree {
             throw new Exception("Not balanced!");
         }
         return Math.max(leftDepth, rightDepth) + 1;
+    }
+    
+    // Check if this BFS works fine too
+    private boolean isBalanced2(TreeNode root) {
+    	LinkedList<TreeNode> q = new LinkedList<TreeNode>();
+    	q.add(root);
+    	TreeNode endOfLevel = root;
+    	boolean isBranchEnd = false;
+    	int depthDiff = 1;
+    	while(q.size() > 0) {
+    		
+    		TreeNode focus = q.remove();
+    		if(focus.left != null) { 
+    			q.add(focus.left);
+    		} else {
+    			isBranchEnd = true;
+    		}
+    		if(focus.right != null) { 
+    			q.add(focus.right);
+    		} else {
+    			isBranchEnd = true;
+    		}
+    		
+    		if(depthDiff < 0) { return false;}
+    		if(focus == endOfLevel && isBranchEnd) {
+    			endOfLevel = q.peekLast();
+    			depthDiff--;
+    		}
+    	}
+    	return true;
     }
 	
 }

@@ -68,9 +68,9 @@ public class Rotation {
 	public static ListNode rotateRight2(ListNode head, int n) {
 	    if (head==null||head.next==null) return head;
 	    
-	    ListNode dummy=new ListNode(0);
-	    dummy.next=head;
-	    ListNode focus1=dummy,focus2=dummy;
+	    ListNode start=new ListNode(0);
+	    start.next=head;
+	    ListNode focus1=start,focus2=start;
 
 	    int i;
 	    for (i=0;focus1.next!=null;i++)//Get the total length 
@@ -79,11 +79,11 @@ public class Rotation {
 	    for (int j=i-n%i;j>0;j--) //Get the i-n%i th node
 	        focus2=focus2.next;
 
-	    focus1.next=dummy.next; //Do the rotation
-	    dummy.next=focus2.next;
+	    focus1.next=start.next; //Do the rotation
+	    start.next=focus2.next;
 	    focus2.next=null;
 
-	    return dummy.next;
+	    return start.next;
 	}
     
     public static int getSize(ListNode head) {

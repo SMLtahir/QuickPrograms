@@ -11,6 +11,7 @@ public class MergeSorting {
 
 	public static void main(String[] args) {
 		int length_of_array;
+		System.out.println("Enter length of array to sort. A random array of this length will be created.");
 		Scanner in = new Scanner(System.in);
 		length_of_array = in.nextInt();
 		int A []=new int[length_of_array],i;
@@ -29,14 +30,25 @@ public class MergeSorting {
 		}
 	}
 	
+	//Merge two sorted arrays in place. Assume nums1 has space = m+n-1 where m, n are spaces of the two arrays.
+	public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int i = m-1, j = n-1, k = m+n-1;
+        while(i >= 0 && j >= 0) {
+            nums1[k--] = (nums1[i] >= nums2[j]) ? nums1[i--] : nums2[j--];
+        }
+        while(j >= 0) {
+            nums1[k--] = nums2[j--];
+        }
+    }
+	
 	//Perform the mergesort algorithm
 	public static int[] MergeSort(int [] A)	{
 		if(A.length==1)	{ return A;}
 		
 		else {
-			int n=(int) Math.floor(A.length/2);
-			int[] B = new int [n];
-			int[] C = new int [A.length-n];
+			int n=(int) A.length/2;
+			int[] B = new int[n];
+			int[] C = new int[A.length-n];
 			int i;
 			
 			for(i=0; i<A.length; i++) {
