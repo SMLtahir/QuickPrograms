@@ -137,7 +137,7 @@ public class ParkingLot {
 	
 }
 
-class Slot {
+abstract class Slot {
 	
 	public boolean isOccupied;
 	public int slotNumber;
@@ -148,13 +148,17 @@ class Slot {
 		isOccupied = false;
 		this.slotNumber = slotNr;
 	}
+	
+	void setType(SlotType type) {
+		this.slotType = type;
+	}
 }
 
 class SmallSlot extends Slot {
 
 	SmallSlot(int slotNr) { 
 		super(slotNr);
-		this.slotType = SlotType.Small;
+		setType(SlotType.Small);
 	}	
 }
 
@@ -162,7 +166,7 @@ class MediumSlot extends Slot {
 
 	MediumSlot(int slotNr) { 
 		super(slotNr);
-		this.slotType = SlotType.Medium;
+		setType(SlotType.Medium);
 	}	
 }
 
@@ -170,7 +174,7 @@ class LargeSlot extends Slot {
 
 	LargeSlot(int slotNr) { 
 		super(slotNr);
-		this.slotType = SlotType.Large;
+		setType(SlotType.Large);
 	}	
 }
 

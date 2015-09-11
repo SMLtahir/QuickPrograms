@@ -1,4 +1,4 @@
-package miscellaneous;
+package objectOrientedPrograms;
 
 import java.util.HashMap;
 

@@ -16,43 +16,6 @@ public class PalindromeLinkedList {
 		System.out.println("LinkedList is Palindrome: "+ isPalindrome(head));
 
 	}
-	
-    public static boolean isPalindrome1(ListNode head) {
-        // Trivial case
-        if(head == null || head.next == null) { return true;}
-        
-        ListNode start = new ListNode(0);
-        start.next = head;
-        ListNode firstHalfStart = head;
-        ListNode slow = head;
-        ListNode fast = head;
-        
-        // Traverse to mid node and Reverse the First half of the LinkedList in the same run
-        while(fast.next != null && fast.next.next != null) {
-            fast = fast.next.next;
-            
-            start.next = slow.next;
-            slow.next = slow.next.next;
-            start.next.next = firstHalfStart;
-            
-            firstHalfStart = start.next;
-        }
-        
-        // Offset for odd number of elements
-        // As the mid node is common to both halves, this should be skipped
-        if(fast.next == null) { 
-            firstHalfStart = firstHalfStart.next;
-        }
-        // SecondHalf pointer will be one after where the slow pointer stopped
-        ListNode secondHalfStart = slow.next;
-
-        while(slow != null) {
-            if(firstHalfStart.val != secondHalfStart.val) { return false;}
-            secondHalfStart = secondHalfStart.next;
-            firstHalfStart = firstHalfStart.next;
-        }
-        return true;
-    }
     
     public static boolean isPalindrome(ListNode head) {
         // Trivial case
@@ -80,7 +43,8 @@ public class PalindromeLinkedList {
         if(fast.next == null) {
             firstHalfStart = firstHalfStart.next;
         }
-        // SecondHalf pointer will be one after where the slow pointer stopped
+        // At the end of the previous loop, SecondHalfStart pointer is still stuck on the end of the first half
+        // Shift it by one to take it to the start of the SecondHalf
         secondHalfStart = secondHalfStart.next;
         
         while(secondHalfStart != null) {
