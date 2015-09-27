@@ -40,5 +40,15 @@ public class FindUniqueAmongstDuplicates {
 		//If all values contain duplicates, return 0
 		return -1;
 	}
+	
+	public static int findUnique2(int[] nums) {
+		if(nums.length == 0) { return -1;}
+		int result = nums[0];
+		
+		for(int i=1; i< nums.length; i++) {
+			result = result ^ nums[i];
+		}
+		return result;
+	}
 
 }

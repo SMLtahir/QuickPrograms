@@ -6,8 +6,6 @@ public class PalindromeBits {
 	public static void main(String[] args) {
 
 		System.out.println("Binary Number "+ Integer.toBinaryString(INPUT) + " is a palindrome: "+ isPalindrome(INPUT));
-		boolean test = ("foo" == new String("foo"));
-		System.out.println("Test: "+ test);
 	}
 	
 	public static boolean isPalindrome(int x) {

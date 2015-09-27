@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
+import trees.BuildTreeFromOrders.TreeNode;
+
 public class LevelOrderTraversal {
 
 	/**
@@ -37,6 +39,23 @@ public class LevelOrderTraversal {
         }
         return output;
     }
+	
+	// This method does not use any additional data structure and thus uses O(1) space if 
+	// memory used for result list is not considered. In general, it is a more efficient method than when queue is used.
+	public List<List<Integer>> levelOrderRecursive(TreeNode root) {
+		List<List<Integer>> result = new ArrayList<List<Integer>>();
+		if(root == null) { return result;}
+		getLevelOrder(result, root, 0);
+		return result;
+	}
+	
+	private void getLevelOrder(List<List<Integer>> result, TreeNode root, int level) {
+		
+		if(result.size() <= level) { result.add(new ArrayList<Integer>());}
+		result.get(level).add(root.val);
+		if(root.left != null) { getLevelOrder(result, root.left, level+1);}
+		if(root.right != null) { getLevelOrder(result, root.right, level+1);}
+	}
 	
 	/**
 	 * Given a binary tree, return the bottom-up level order traversal of its nodes' values. (ie, from left to right, level by level from leaf to root).
@@ -73,5 +92,11 @@ public class LevelOrderTraversal {
         }
         return output;
     }
-	
+
+    class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) { val = x; }
+    }
 }

@@ -10,7 +10,7 @@ package arrays;
  */
 public class FindMissingElement {
 
-	private static final int[] INPUT_ARRAY = {1,2,3,4,6,7,8,9};
+	private static final int[] INPUT_ARRAY = {1,2,3,4,5,6,8,9};
 	public static void main(String[] args) {
 
 		System.out.println("Missing Element is: "+ findMissingElement(INPUT_ARRAY));
@@ -27,12 +27,12 @@ public class FindMissingElement {
 		int max = array.length - 1;
 		
 		while(max-min > 1)	{
-			int temp = (int) (max + min) /2;
-			if(temp+1 == array[temp])	{
-				min = temp;
+			int mid = (int) (max + min) /2;
+			if(mid+1 == array[mid])	{
+				min = mid;
 			}
 			else	{
-				max = temp;
+				max = mid;
 			}
 		}
 		return array[min] + 1;

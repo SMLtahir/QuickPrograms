@@ -12,17 +12,13 @@ public class MoveZerosToEnd {
 	
 	public static int[] moveZerosToEnd(int[] array) {
 		
-		for(int i=0; i< array.length; i++) {
+		for(int i=0, j= array.length-1; i< j; i++) {
 			if(array[i] == 0) {
-				for(int j = i+1; j< array.length; j++) {
-					if(array[j] != 0) {
-						array[i] = array[j];
-						array[j] = 0;
-						break;
-					}
-					if(j == array.length -1)	
-						i = j;
-				}
+				while(i< j && array[j] == 0) { j--;}
+				if(i >= j) break;
+				int temp = array[j];
+				array[j] = array[i];
+				array[i] = temp;
 			}
 		}
 		
