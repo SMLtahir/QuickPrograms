@@ -63,18 +63,12 @@ public class SampleUsage {
 	}
 
 	private static int countBits(int number)	{
-		boolean negFlag = false;
-		if(number < 0)	{ 
-			negFlag = true;
-			number = ~number;
-		}
-		
 		int result = 0;
 		while(number != 0)	{
 			result += number & 1;
-			number = number >> 1;
+			number = number >>> 1;
 		}
-		return negFlag? (32-result): result;
+		return result;
 	}
 	
 	/**
