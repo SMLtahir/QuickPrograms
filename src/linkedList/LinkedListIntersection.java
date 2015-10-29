@@ -6,17 +6,6 @@ package linkedList;
  * @author Tahir Sousa
  *
  */
-
-  //Definition of a ListNode
-  class ListNode {
-      int val;
-      ListNode next;
-      ListNode(int x) {
-          val = x;
-          next = null;
-      }
-  }
- 
   public class LinkedListIntersection {
 	
 		public static void main(String[] args) {

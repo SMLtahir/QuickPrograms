@@ -2,6 +2,8 @@ package strings;
 
 /**
  * Finding the longest palindromic substring of a string
+ * TODO: Better algorithm given here:
+ * http://articles.leetcode.com/2011/11/longest-palindromic-substring-part-ii.html
  * @author Tahir
  *
  */

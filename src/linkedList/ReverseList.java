@@ -11,8 +11,9 @@ public class ReverseList {
 //		LinkListUtils.display(reversedHead);
 //		ListNode reversedHead = reverseBetween(head,1,5);
 //		LinkListUtils.display(reversedHead);
-		ListNode reversedKHead = reverseKGroup(head,3);
-		LinkListUtils.display(reversedKHead);
+//		ListNode reversedKHead = reverseKGroup(head,3);
+		ListNode reversedFromXHead = reverseFromX(head, 3);
+		LinkListUtils.display(reversedFromXHead);
 
 	}
 	
@@ -131,6 +132,30 @@ For k = 3, you should return: 3->2->1->4->5
 			prefocus = focus;
 			focus = focus.next;
 			end = focus;
+		}
+		return start.next;
+	}
+	
+	public static ListNode reverseFromX(ListNode head, int x) {
+		if(head == null || head.next == null) { return head;}
+		ListNode start = new ListNode(0);
+		start.next = head;
+		ListNode fast = head;
+		ListNode pre = start;
+		
+		for(int i=1;i<=x; i++) {
+			fast = fast.next;
+		}
+		while(fast != null) {
+			fast = fast.next;
+			pre = pre.next;
+		}
+		fast = pre.next;
+		while(fast.next != null) {
+			ListNode temp = fast.next;
+			fast.next = fast.next.next;
+			temp.next = pre.next;
+			pre.next = temp;
 		}
 		return start.next;
 	}

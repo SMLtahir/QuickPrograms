@@ -105,10 +105,11 @@ For example:
      * @return
      */
     public static int titleToNumber(String s) {
-        char[] ch = s.toCharArray();
-        int len = ch.length;
+        int len = s.length();
         int result = 0;
+        // Here i represents the place of the number i.e. units place, tens place, etc.
         // val(ch[i]) = 1+ int(ch[0]) - int('a')
+        
         // len = 1
         // val(ch[0])*26^0
         
@@ -120,11 +121,11 @@ For example:
         int i = len;
         while(i > 1) {
             result += Math.pow(26, i-1);
-            if((int) ch[len- i] != 'a' && (int) ch[len- i] != 'A')
-                result += (value(ch[len- i])-1)*Math.pow(26, i-1);
+            if((int) s.charAt(len- i) != 'a' && (int) s.charAt(len- i) != 'A')
+                result += (value(s.charAt(len- i))-1)*Math.pow(26, i-1);
             i--;
         }
-        result += value(ch[len- i]);
+        result += value(s.charAt(len- i));
         return result;
     }
     

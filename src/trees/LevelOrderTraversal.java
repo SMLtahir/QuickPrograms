@@ -5,8 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
-import trees.BuildTreeFromOrders.TreeNode;
-
 public class LevelOrderTraversal {
 
 	/**
@@ -93,10 +91,10 @@ public class LevelOrderTraversal {
         return output;
     }
 
-    class TreeNode {
+    /*class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
         TreeNode(int x) { val = x; }
-    }
+    }*/
 }

@@ -1,5 +1,7 @@
 package trees;
 
+import linkedList.ListNode;
+
 public class ConvertLinkedListToBST {
 
     private static ListNode node;
@@ -33,16 +35,16 @@ public class ConvertLinkedListToBST {
     }
     
 
-	static class ListNode {
+	/*static class ListNode {
 	  int val;
 	  ListNode next;
 	  ListNode(int x) { val = x; }
-	}
+	}*/
 	 
-	static class TreeNode {
+	/*static class TreeNode {
 	  int val;
 	  TreeNode left;
 	  TreeNode right;
 	  TreeNode(int x) { val = x; }
-	}
+	}*/
 }

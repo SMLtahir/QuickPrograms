@@ -7,11 +7,11 @@ Solve it without using extra space.
  *
  */
 public class ContainsCycle {
-    public static boolean hasCycle(LListNode head) {
+    public static boolean hasCycle(ListNode head) {
         if(head == null)    return false;
         
-        LListNode slowRunner = head;
-        LListNode fastRunner = head.next;
+        ListNode slowRunner = head;
+        ListNode fastRunner = head.next;
         
         while(fastRunner != null && fastRunner.next != null) {
             if(slowRunner == fastRunner)    return true;    //They have caught up at a common node
@@ -19,15 +19,5 @@ public class ContainsCycle {
             fastRunner = fastRunner.next.next;
         }
         return false;
-    }
-}
-
-//Definition for singly-linked list.
-class LListNode {
-    int val;
-    LListNode next;
-    LListNode(int x) {
-        val = x;
-        next = null;
     }
 }

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-import trees.BuildTreeFromOrders.TreeNode;
-
 public class OrderTraversals {
 
 	// Recursive Inorder Traversal
@@ -68,10 +66,10 @@ public class OrderTraversals {
          return result;
     }
  	
-    class TreeNode {
+    /*class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
         TreeNode(int x) { val = x; }
-    }
+    }*/
 }
