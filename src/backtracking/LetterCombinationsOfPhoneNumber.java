@@ -1,5 +1,6 @@
 package backtracking;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class LetterCombinationsOfPhoneNumber {
 		System.out.println(letterCombinations(INPUT).toString());
 	}
 	
+	// Using iteration
     public static List<String> letterCombinations(String digits) {
         LinkedList<String> combos = new LinkedList<String>();
         if(digits.length() == 0) { return combos;}
@@ -35,5 +37,28 @@ public class LetterCombinationsOfPhoneNumber {
         }
         return combos;
     }
+    
+    // Using recursion
+    private static List<String> getPerms(String n) {
+		String[] dict = {"0","1","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+		return getPerms(n, dict, "");
+	}
+
+	private static List<String> getPerms(String n, String[] dict, String s) {
+		List<String> result = new ArrayList<String>();
+		if(n.length() == 0) { 
+			result.add(s);
+			return result;
+		}
+		
+		int num = Integer.parseInt(n.substring(0,1));  // Take first character
+		for(int j=0;j< dict[num].length(); j++) {
+			char ch = dict[num].charAt(j);
+			String newN = n.substring(1,n.length());	// Using remaining characters
+			result.addAll(getPerms(newN, dict, s+ch));
+		}
+		
+		return result;
+	}
 
 }

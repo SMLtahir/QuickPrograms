@@ -33,7 +33,9 @@ public class RottenTomatoes {
 			if(!progressOneStep(board, rotten)) { break;}
 			steps++;
 		}
-		boolean spoiled = isAllSpoiled(board);
+		// To get rid of this step, store the number of non-zero cells (n) at the start and decrement whenever a new tomato rots
+		// Keep checking the size of the rotten Set and when it equals n,break out of the above loop. Only check this condition after the loop as well.
+		boolean spoiled = isAllSpoiled(board);	
 		if(spoiled) { return steps;}
 		return -1;
 	}
